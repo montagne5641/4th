@@ -35,7 +35,7 @@ st.title("圃場マップ🌎")
 #土壌診断結果
 st.markdown("""土壌診断データを選択してください。""")
 soil_data =  st.file_uploader("file_upload", type="csv")  #pd.read_csv(R"C:\Users\220127\Desktop\remo_sen\Scripts\富良野土壌診断.csv", encoding = "shift-jis")
-soil_data = pd.DataFrame(soil_data)
+soil_data = pd.read_csv(soil_data, encoding = "shift-jis")
 soil_data['推移'] = soil_data.iloc[:, 1:len(soil_data)].values.tolist()
 
 st.markdown("""※デモとして中富良野町だけデータ入れています。""")
