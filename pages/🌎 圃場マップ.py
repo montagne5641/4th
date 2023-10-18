@@ -40,7 +40,7 @@ soil_data =  st.file_uploader("file_upload", type="csv")  #pd.read_csv(R"C:\User
 if soil_data:
 
         # 日本地図を読み込み
-        japan = gpd.GeoDataFrame.from_file("japan_ver84.shp")
+        japan = gpd.GeoDataFrame.from_file("japan_ver84/japan_ver84.shp")
     
         #土壌診断データの取り込み
         soil_data = pd.read_csv(soil_data, encoding = "shift-jis")
