@@ -45,7 +45,7 @@ if soil_data:
         st.markdown("""※デモとして中富良野町だけデータ入れています。""")
 
         #区域表示
-        kuiki_on = st.checkbox("区域を表示する）",value = True)
+        kuiki_on = st.checkbox("区域を表示する",value = False)
     
         # 地図表示する際の中心座標を指定
         map = folium.Map(location=[43.342009,142.383147], zoom_start=6)
