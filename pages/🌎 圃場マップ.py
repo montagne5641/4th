@@ -85,7 +85,6 @@ if soil_data:
             folium.features.GeoJson(gjson, name="北海道").add_to(map)
 
             fude_polygon = gpd.read_file("2023_014613.json")
-            st.dataframe(fude_polygon.head())
             fude_polygon.plot(figsize=(12,12))
    
         # 地図出力
