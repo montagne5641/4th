@@ -44,7 +44,8 @@ if soil_data:
         soil_data['推移'] = soil_data.iloc[:, 1:len(soil_data)].values.tolist()
         st.markdown("""※デモとして中富良野町だけデータ入れています。""")
 
-    
+        #区域表示
+        kuiki_on = st.checkbox("区域を表示する）",value = True)
     
         # 地図表示する際の中心座標を指定
         map = folium.Map(location=[43.342009,142.383147], zoom_start=6)
@@ -70,21 +71,19 @@ if soil_data:
             blur=30, #ぼかし
         ).add_to(map)
 
-
-        # 日本地図を読み込み
-        japan = gpd.GeoDataFrame.from_file("japan_ver84/japan_ver84.shp")
-
-        # 北海道を抽出
-        ken = japan[japan["KEN"]=="北海道"]
-        
-        # shpファイルをGeoJSON化
-        gjson = ken.to_json()
-        
-        # GeoJSONをマップに追加
-        folium.features.GeoJson(gjson, name="北海道").add_to(map)
-
+        if kuiki_on==True:
+            # 日本地図を読み込み
+            japan = gpd.GeoDataFrame.from_file("japan_ver84/japan_ver84.shp")
     
-        
+            # 北海道を抽出
+            ken = japan[japan["KEN"]=="北海道"]
+            
+            # shpファイルをGeoJSON化
+            gjson = ken.to_json()
+            
+            # GeoJSONをマップに追加
+            folium.features.GeoJson(gjson, name="北海道").add_to(map)
+   
         # 地図出力
         output = st_folium(map, width=1200, height=500)
         #output = st.components.v1.html(folium.Figure().add_child(map).render(), height=500)
