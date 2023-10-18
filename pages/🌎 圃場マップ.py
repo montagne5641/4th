@@ -17,6 +17,7 @@ from scipy import interpolate #補完
 
 import folium
 from folium import plugins
+import geopandas as gpd
 from streamlit_folium import st_folium
 from streamlit_folium import folium_static
 import branca
@@ -38,6 +39,9 @@ soil_data =  st.file_uploader("file_upload", type="csv")  #pd.read_csv(R"C:\User
 
 if soil_data:
 
+        # 日本地図を読み込み
+        japan = gpd.GeoDataFrame.from_file("japan_ver84.shp")
+    
         #土壌診断データの取り込み
         soil_data = pd.read_csv(soil_data, encoding = "shift-jis")
         soil_data['推移'] = soil_data.iloc[:, 1:len(soil_data)].values.tolist()
