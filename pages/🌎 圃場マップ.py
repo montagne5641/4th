@@ -30,7 +30,10 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-
+#土壌診断結果
+soil_data =  st.file_uploader("file_upload", type="csv")  #pd.read_csv(R"C:\Users\220127\Desktop\remo_sen\Scripts\富良野土壌診断.csv", encoding = "shift-jis")
+soil_data = pd.DataFrame(soil_data)
+soil_data['推移'] = soil_data.iloc[:, 1:len(soil_data)].values.tolist()
 
 st.title("圃場マップ🌎")
 st.markdown("""生産圃場を選択してください。
@@ -40,10 +43,7 @@ st.markdown("""生産圃場を選択してください。
 # if st.button('Reload.'):
 #   #st.write('Now Reloading...')
 #   ""#st.rerun()
-#土壌診断結果
-soil_data =  st.file_uploader("file_upload", type="csv")  #pd.read_csv(R"C:\Users\220127\Desktop\remo_sen\Scripts\富良野土壌診断.csv", encoding = "shift-jis")
-soil_data = pd.DataFrame(soil_data)
-soil_data['推移'] = soil_data.iloc[:, 1:len(soil_data)].values.tolist()
+
 
 # 地図表示する際の中心座標を指定
 map = folium.Map(location=[43.342009,142.383147], zoom_start=6)
