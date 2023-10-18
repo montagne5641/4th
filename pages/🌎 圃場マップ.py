@@ -95,9 +95,10 @@ if output["last_object_clicked_tooltip"]=="中富良野町":
                     hide_index=True,)
 
     st.write("コメント")
+    st.write("-------------------")
     st.write("✔ 玉の肥大に重要な可給態リン酸は十分量蓄積しています(250mg/土壌100g)。")
     st.write("✔ 例年比、NDVIの立ち上がりが遅い傾向です。〇〇液肥の追肥を推奨します。")
     
-st.sidebar.write("-------------------")
+st.write("-------------------")
 st.button('Data Download(仮)')
 
