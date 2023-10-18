@@ -45,6 +45,7 @@ if soil_data:
         st.markdown("""※デモとして中富良野町だけデータ入れています。""")
 
     
+    
         # 地図表示する際の中心座標を指定
         map = folium.Map(location=[43.342009,142.383147], zoom_start=6)
         
@@ -80,7 +81,7 @@ if soil_data:
         gjson = ken.to_json()
         
         # GeoJSONをマップに追加
-        folium.features.GeoJson(gjson, name="北海道",weight=1).add_to(map)
+        folium.features.GeoJson(gjson, name="北海道").add_to(map)
 
     
         
