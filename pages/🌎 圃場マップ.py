@@ -38,9 +38,6 @@ st.markdown("""土壌診断データを選択してください。""")
 soil_data =  st.file_uploader("file_upload", type="csv")  #pd.read_csv(R"C:\Users\220127\Desktop\remo_sen\Scripts\富良野土壌診断.csv", encoding = "shift-jis")
 
 if soil_data:
-
-        # 日本地図を読み込み
-        japan = gpd.GeoDataFrame.from_file("japan_ver84/japan_ver84.shp")
     
         #土壌診断データの取り込み
         soil_data = pd.read_csv(soil_data, encoding = "shift-jis")
@@ -71,6 +68,21 @@ if soil_data:
             radius=35, #サイズ
             blur=30, #ぼかし
         ).add_to(map)
+
+
+        # 日本地図を読み込み
+        japan = gpd.GeoDataFrame.from_file("japan_ver84/japan_ver84.shp")
+
+        # 北海道を抽出
+        ken = japan[japan["KEN"]=="北海道"]
+        
+        # shpファイルをGeoJSON化
+        gjson = ken.to_json()
+        
+        # GeoJSONをマップに追加
+        folium.features.GeoJson(gjson, name="北海道").add_to(map)
+
+    
         
         # 地図出力
         output = st_folium(map, width=1200, height=500)
