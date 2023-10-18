@@ -30,6 +30,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# ファイルアップロードして表示
+data = st.file_uploader("file_upload", type="csv") 
 
 st.title("圃場マップ🌎")
 st.markdown("""生産圃場を選択してください。
@@ -40,7 +42,7 @@ st.markdown("""生産圃場を選択してください。
 #   #st.write('Now Reloading...')
 #   ""#st.rerun()
 #土壌診断結果
-soil_data =  pd.read_csv(R"C:\Users\220127\Desktop\remo_sen\Scripts\富良野土壌診断.csv", encoding = "shift-jis")
+soil_data =  data #pd.read_csv(R"C:\Users\220127\Desktop\remo_sen\Scripts\富良野土壌診断.csv", encoding = "shift-jis")
 soil_data['推移'] = soil_data.iloc[:, 1:len(soil_data)].values.tolist()
 
 # 地図表示する際の中心座標を指定
