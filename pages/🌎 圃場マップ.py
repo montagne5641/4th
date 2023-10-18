@@ -84,9 +84,12 @@ if soil_data:
             # GeoJSONをマップに追加
             folium.features.GeoJson(gjson, name="北海道").add_to(map)
 
+            #筆ポリゴン利用
             fude_polygon = gpd.read_file("2023_014613.json")
-            fude_polygon.plot(figsize=(12,12))
-   
+            #fude_polygon.plot(figsize=(12,12))
+            folium.GeoJson(fude_polygon).add_to(map)
+
+    
         # 地図出力
         output = st_folium(map, width=1200, height=500)
         #output = st.components.v1.html(folium.Figure().add_child(map).render(), height=500)
