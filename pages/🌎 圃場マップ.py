@@ -80,7 +80,7 @@ if soil_data:
         gjson = ken.to_json()
         
         # GeoJSONをマップに追加
-        folium.features.GeoJson(gjson, name="北海道").add_to(map)
+        folium.features.GeoJson(gjson, name="北海道",weight=1).add_to(map)
 
     
         
