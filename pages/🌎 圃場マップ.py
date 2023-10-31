@@ -89,10 +89,10 @@ if soil_data:
             #fude_polygon.plot(figsize=(12,12))
             folium.GeoJson(fude_polygon,
                            style_function=lambda feature: {
-                        "fillColor": "red",
+                        "fillColor": "blue",
                         "color": "black",
-                        "weight": 10 ,
-                        "fillOpacity": 1}
+                        "weight": 1 ,
+                        "fillOpacity": 0.1}
                          ).add_to(map)
 
     
