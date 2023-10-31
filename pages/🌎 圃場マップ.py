@@ -88,12 +88,7 @@ if soil_data:
             fude_polygon = gpd.read_file("2023_014613.json")
             #fude_polygon.plot(figsize=(12,12))
             folium.GeoJson(fude_polygon,
-                           style_function=lambda feature: {
-                            #"fillColor": "blue",
-                            "color": "black",
-                            "weight": 3,
-                            "fillOpacity":0.1,
-                        }).add_to(map)
+                         ).add_to(map)
 
     
         # 地図出力
